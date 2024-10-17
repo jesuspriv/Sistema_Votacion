@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganador</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Resultado de la Votación</h2>
+        {% if ganador %}
+            <p>Ganador: {{ ganador[0] }}</p>
+            <p>Partido: {{ ganador[1] }}</p>
+            <p>Votos: {{ ganador[2] }}</p>
+            {% if ganador[3] %}
+                <img src="/{{ ganador[3] }}" alt="Foto de {{ ganador[0] }}">
+            {% endif %}
+            <form action="{{ url_for('votar') }}" method="get">
+                <button type="submit">Volver a votar</button>
+            </form>
+        {% else %}
+            <p>No se han registrado votos.</p>
+        {% endif %}
+    </div>
+
+    <!-- Contenedor de confeti -->
+    <div class="confetti">
+    </div>
+
+    <script>
+        function createConfetti() {
+            const confettiContainer = document.querySelector('.confetti');
+            const colors = ['#fdf482', '#f8a2a2', '#a7f8a7', '#9494fc'];
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.width = Math.random() * 10 + 'px';
+                confetti.style.height = Math.random() * 10 + 'px';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.top = Math.random() * 100 + '%';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            createConfetti();
+        });
+    </script>
+</body>
+</html>

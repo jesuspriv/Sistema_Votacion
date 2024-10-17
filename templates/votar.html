@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votación</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Votación</h2>
+        <form method="POST">
+            <div class="votar-container">
+                {% for candidato in candidatos %}
+                    <div>
+                        <input type="radio" id="candidato{{ candidato[0] }}" name="candidato" value="{{ candidato[0] }}" required>
+                        <label for="candidato{{ candidato[0] }}">{{ candidato[1] }} ({{ candidato[2] }})</label><br>
+                        {% if candidato[3] %}
+                            <img src="/{{ candidato[3] }}" alt="Foto de {{ candidato[1] }}">
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit">Votar</button>
+        </form>
+        <a href="/ganador">Ver Ganador</a>
+    </div>
+</body>
+</html>
+

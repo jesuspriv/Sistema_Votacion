@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Candidato</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Agregar Candidato</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre" required><br><br>
+            <label for="partido">Partido:</label><br>
+            <input type="text" id="partido" name="partido" required><br><br>
+            <label for="foto">Foto:</label><br>
+            <input type="file" id="foto" name="foto"><br><br>
+            <button type="submit" name="agregar_mas">Agregar otro candidato</button>
+            <button type="submit" name="ir_a_votar">Ir a votar</button>
+        </form>
+    </div>
+</body>
+</html>
+

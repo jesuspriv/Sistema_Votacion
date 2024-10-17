@@ -1,0 +1,108 @@
+/* Estilo global para el fondo */
+body {
+    background-color: #fffbf0; /* Color beige claro */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative; /* Necesario para el confeti */
+    overflow: hidden; /* Evita el scroll causado por el confeti */
+}
+
+/* Contenedor principal para la votación */
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    margin: 20px auto; /* Agregar margen superior e inferior */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente el contenido */
+    text-align: center;
+    position: relative; /* Necesario para asegurar que el contenedor esté encima del confeti */
+    z-index: 1; /* Asegura que el contenedor esté encima del confeti */
+}
+
+/* Estilo para asegurar que el texto esté dentro del recuadro */
+.container p {
+    margin: 10px 0;
+}
+
+/* Estilo para botones */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Confeti animación */
+@keyframes confetti {
+    0% { transform: translateY(-100%); opacity: 1; }
+    100% { transform: translateY(100%); opacity: 0; }
+}
+
+.confetti {
+    position: fixed; /* Usa fixed para que cubra toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Usa viewport width y height */
+    height: 100vh; /* Usa viewport height */
+    pointer-events: none; /* Evita que el confeti interfiera con la interacción del usuario */
+    overflow: hidden;
+    z-index: -1; /* Asegura que esté detrás del contenido */
+}
+
+.confetti div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ff0;
+    opacity: 0.8;
+    animation: confetti 2s infinite;
+}
+
+.confetti div:nth-child(2) { background: #f00; animation-duration: 2.5s; }
+.confetti div:nth-child(3) { background: #0f0; animation-duration: 3s; }
+.confetti div:nth-child(4) { background: #00f; animation-duration: 3.5s; }
+.confetti div:nth-child(5) { background: #ff0; animation-duration: 4s; }
+
+@media (max-width: 600px) {
+    .confetti div {
+        width: 5px;
+        height: 5px;
+    }
+}
+
+/* Estilo para las imágenes en la página de votación */
+.votar-container {
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    max-height: 500px; /* Establece una altura máxima para el contenedor */
+    overflow-y: auto; /* Permite el desplazamiento vertical si es necesario */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.votar-container div {
+    margin-bottom: 15px; /* Espacio entre cada opción de candidato */
+    width: 100%; /* Asegura que cada opción ocupe el ancho completo del contenedor */
+    box-sizing: border-box; /* Asegura que el padding y el borde no causen desbordamiento */
+}
+
+.votar-container img {
+    max-width: 100%; /* Asegura que las imágenes no se desborden horizontalmente */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 10px;
+}
+
